@@ -5,9 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="./app.js"></script>
 </head>
 <body>
-    
+
+<script>
+    //EX_1
+    var body = document.body, elem = document.createElement('div');
+    body.appendChild(elem);
+    elem.innerHTML="Этот элемент создан при помощи DOM API";
+
+    //EX_2
+    var secondDiv = document.createElement('div');
+    secondDiv.className="inner";
+    secondDiv.innerHTML="Этот элемент тоже создан при помощи DOM API";
+    elem.appendChild(secondDiv);
+
+    //EX_3
+    secondDiv.style="color: red";
+
+    //EX_4
+    elem.onclick = function() {
+        console.log('Этот текст говорит о том, что я всё сделал правильно');
+    }
+
+    //EX_5
+    var link = document.createElement('a');
+    link.href="https://loftschool.com";
+    link.innerHTML = 'Нажимаем';
+    body.appendChild(link);
+    link.onclick= function(){
+        console.log('Я кликнул на ссылку'+link.href);
+        return false;
+    }
+
+    //EX_6
+    var input = document.createElement('input'), 
+    button = document.createElement('button');
+    input.type="text";
+    input.placeholder="Текст";
+    button.innerHTML="Тык";
+    body.appendChild(document.createElement('br'));
+    body.appendChild(input);
+    body.appendChild(button);
+
+    button.onclick = function () {
+        console.log(input.value);
+    }
+</script>
+
 </body>
 </html>
