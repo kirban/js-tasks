@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Debugging</title>
+</head>
+<body>
+
+    <script>
+        //ex 1
+        var array = [12, 100, 34, 65, 10];
+        var result = filter(array, 60);
+
+        console.dir(result);
+
+        result = filter(array, 20);
+        console.dir(result); 
+
+        function filter(input, than) {           
+        // напишите здесь код, который возвращает новый массив
+        // в котором содержатся те элементы input, которые больше than
+            resultArr = [];
+
+            for (let i = 0; i < input.length; i++){
+                if (input[i]>=than){
+                    resultArr.push(input[i]);
+                }
+            }
+            return resultArr;
+        }
+        
+        //ex 2
+        function checkIsFinite(arr){
+            for (let i=0; i < arr.length; i++){
+                if (!isFinite(arr[i])) {
+                    return false;
+                }                
+            }
+            return true;
+        }
+
+        function checkIsPositive(arr){
+            for (let i=0; i < arr.length; i++){
+                if (arr[i]<0) {
+                    return false;
+                }                
+            }
+            return true;
+        }
+
+        function filter2(input1, than1) {           
+            try {
+                if( input1.length == 0){
+                    throw new Error('Пустой массив!');
+                } else if ( !checkIsPositive(input1) ){
+                    throw new Error('Отрицательное число в массиве!');
+                }
+                else if ( !checkIsFinite(input1) ){
+                    throw new Error('Ошибка типа в массиве!');
+                }
+                resultArr1 = [];
+            for (let i = 0; i < input1.length; i++){
+                if (input1[i]>=than1){
+                    resultArr1.push(input1[i]);
+                }
+            }
+            return resultArr1;  
+
+            } catch (e) {
+                console.error(e.message);
+            }
+                      
+        }
+        filter2([],6);
+        filter2([1,-2,-1],6);
+        filter2([2, 'LOL', 7],6);
+        console.log(filter2([1,2,5,7,9,29],6));
+
+    </script>
+</body>
+</html>
