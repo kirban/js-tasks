@@ -50,33 +50,54 @@
             return true;
         }
 
-        function filter2(input1, than1) {           
-            try {
-                if( input1.length == 0){
-                    throw new Error('Пустой массив!');
-                } else if ( !checkIsPositive(input1) ){
-                    throw new Error('Отрицательное число в массиве!');
-                }
-                else if ( !checkIsFinite(input1) ){
-                    throw new Error('Ошибка типа в массиве!');
-                }
-                resultArr1 = [];
+        function filter2(input1, than1) {   
+
+            if( input1.length == 0){
+                throw new Error('Пустой массив!');
+            } else if ( !checkIsPositive(input1) ){
+                throw new Error('Отрицательное число в массиве!');
+            }
+            else if ( !checkIsFinite(input1) ){
+                throw new Error('Ошибка типа в массиве!');
+            }
+
+            resultArr1 = [];
+
             for (let i = 0; i < input1.length; i++){
                 if (input1[i]>=than1){
-                    resultArr1.push(input1[i]);
+                resultArr1.push(input1[i]);
                 }
             }
-            return resultArr1;  
-
-            } catch (e) {
-                console.error(e.message);
-            }
-                      
+            console.log(resultArr1);                        
         }
-        filter2([],6);
-        filter2([1,-2,-1],6);
-        filter2([2, 'LOL', 7],6);
-        console.log(filter2([1,2,5,7,9,29],6));
+
+        try{
+            filter2([],6);
+        }
+        catch(e){
+            console.log(e.message);
+        }
+
+        try{
+            filter2([1,-2,-1],6);
+        }
+        catch(e){
+            console.log(e.message);
+        }
+        
+        try{
+            filter2([2, 'LOL', 7],6);
+        }
+        catch(e){
+            console.log(e.message);
+        }
+
+        try{
+            filter2([1,2,5,7,9,29],6);
+        }
+        catch(e){
+            console.log(e.message);
+        }
 
     </script>
 </body>
